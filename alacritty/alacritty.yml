@@ -1,0 +1,104 @@
+window:
+  dimensions:
+    columns: 40
+    lines: 60
+  padding:
+    x: 5
+    y: 5
+  opacity: 0.7
+  title: Alacritty
+  dynamic_title: true
+
+scrolling:
+  history: 10000
+  multiplier: 3
+
+font:
+  normal:
+    family: SourceCodePro
+    style: Regular
+
+  bold:
+    family: SourceCodePro
+    style: Bold
+
+  italic:
+    family: SourceCodePro
+    style: Italic
+
+  bold_italic:
+    family: SourceCodePro
+    style: Bold Italic
+
+  size: 12.0
+
+colors:
+  primary:
+    background: '#1d2931'
+    foreground: '#cedcef'
+
+  search:
+    matches:
+      foreground: '#1d2931'
+      background: '#cedcef'
+    focused_match:
+      foreground: '#1d2931'
+      background: '#7121b2'
+
+    bar:
+      background: '#cedcef'
+      foreground: '#1d2931'
+
+  selection:
+    text: CellForeground
+    background: '#1C477B'
+
+  normal:
+    black:   '#8193B5'
+    red:     '#8E9BBB'
+    green:   '#4D679C'
+    yellow:  '#516D9D'
+    blue:    '#65769A'
+    magenta: '#8193B5'
+    cyan:    '#8594C6'
+    white:   '#1b2021'
+
+  bright:
+    black:   '#2719A0'
+    red:     '#6E5BC8'
+    green:   '#4733B9'
+    yellow:  '#553FC4'
+    blue:    '#5845C3'
+    magenta: '#9888D4'
+    cyan:    '#7361CC'
+    white:   '#897BCE'
+
+  transparent_background_colors: true
+
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+  save_to_clipboard: false
+
+cursor:
+  style:
+    shape: Block
+    blinking: Always
+
+  vi_mode_style: None
+  blink_interval: 750
+  unfocused_hollow: true
+  thickness: 0.15
+
+live_config_reload: true
+
+shell:
+  program: /bin/fish
+
+working_directory: None
+alt_send_esc: true
+
+mouse:
+  double_click: { threshold: 300 }
+  triple_click: { threshold: 300 }
+
+  hide_when_typing: true

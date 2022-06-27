@@ -1,0 +1,47 @@
+Config { font = "xft:SourceCodePro:weight:bold:pixelsize=14:antialias=true:hinting=true"
+       , additionalFonts = ["xft:Mononoki Nerd Font:pixelsize:13:antialias=true:hinting=true"]
+       , borderColor = "black"
+       , border = TopB
+       , bgColor = "#1D2931"
+       , fgColor = "#7A8DA6"
+       , alpha = 255
+       , position = Static { xpos = 0, ypos = 0, width = 1920, height = 27 }
+       , textOffset = -1
+       , iconOffset = -1
+       , lowerOnStart = False
+       , pickBroadest = False
+       , persistent = True
+       , hideOnStart = False
+       , iconRoot = "."
+       , allDesktops = True
+       , overrideRedirect = False
+       , commands = [ 
+                      Run Cpu ["-L","20","-H","50", "--low", "#2d2dbc","--normal","#662dbc","--high","#9d2dbc","-t","cpu <total>%"] 10
+                    , Run Memory ["-t","ram <usedratio>%", "-L", "20", "-H", "50", "--low", "#2d2dbc","--normal", "#662dbc", "--high", "#9d2dbc"] 10
+                    , Run Com "uname" ["-r"] "" 36000
+                    , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+                    , Run Battery        [ "--template" , "bat <acstatus>"
+                             , "--Low"      , "10"        -- units: %
+                             , "--High"     , "80"        -- units: %
+                             , "--low"      , "#9d2dbc"
+                             , "--normal"   , "#662dbc"
+                             , "--high"     , "#2d2dbc"
+
+                             , "--" -- battery specific options
+                                       -- discharging status
+                                       , "-o"	, "<left>%"
+                                       -- AC "on" status
+                                       , "-O"	, "<fc=#3718e2>Charging</fc>"
+                                       -- charged status
+                                       , "-i"	, "<fc=#7718e2>Charged</fc>"
+                             ] 50
+                             , Run Wireless "wlan0" ["-t", "<essid>"] 10
+                             , Run Com "bash" [".config/xmobar/scripts/orphans.sh"] "orphaned" 300
+                             , Run Com "bash" [".config/xmobar/scripts/numpkgs.sh"] "numpkgs" 300         
+                             , Run UnsafeStdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+, template = " <fc=#7786e5>wlan0 %wlan0wi%</fc> | %UnsafeStdinReader%}{ pkgs %numpkgs% | <fc=#7E80C4>orphans %orphaned%</fc> | <fc=#7e91d4>%battery%</fc> | <fc=#4f77cd>%cpu%</fc> | %memory% | <fc=#2056CA>%date%</fc> | <fc=#7E6ADE>%uname%</fc> "
+       }
+
